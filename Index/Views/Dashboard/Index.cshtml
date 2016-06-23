@@ -1,0 +1,307 @@
+﻿@model List<catItem>
+@using HSG.DAL
+@using HSG.Services
+@using HSG.Helper
+@using System.Collections
+@{ ViewBag.Title = "Index | The hype-free guide to the world"; Layout = "";}
+<!doctype html>
+
+<!--[if lt IE 7]><html lang="en-US" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html lang="en-US" class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html lang="en-US" class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en-US" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <title>Index | The hype-free guide to the world </title>
+    <!-- Google Chrome Frame for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- mobile meta (hooray!) -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta content="initial-scale=1, maximum-scale=1, user-scalable=0, width=device-width" name="viewport" />
+
+    <link rel="stylesheet" id="css_bs-css" href="@Url.Content("~/Content/css/bootstrap.css")" type="text/css" media="all">
+    <link rel="stylesheet" id="css_main-css" href="@Url.Content("~/Content/css/style.css")" type="text/css" media="all">
+    <link rel="stylesheet" id="css_main_v2-css" href="@Url.Content("~/Content/css/index-v2.css")" type="text/css" media="all">
+    <script type="text/javascript" src="@Url.Content("~/Content/script/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/script/modernizr.custom.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/script/jquery-ui.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/script/plugins.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/script/scripts.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/script/index2.js")"></script>
+    <!-- All in one Favicon 4.3 -->
+    <!-- end of wordpress head -->
+    <style type="text/css">
+        .sticky-active
+        {
+            top: 50px;
+        }
+
+        .sticky-parked
+        {
+            bottom: 21px;
+        }
+
+        .section-header-wrapper
+        {
+            height: 45px;
+        }
+
+        #page-header.index-header-v2
+        {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        /* index-v2.css */        
+        .index-wrapper-v2 { padding-bottom: 100px;}
+        #page-footer { bottom: 0; width:100%; position: relative;}
+
+        @Html.Raw("@media (max-width: 767px) {") /* 599 */
+        #page-header.fixed-header { position: relative; }
+        @Html.Raw("}")
+
+
+    </style>
+    <script defer="defer" type="text/javascript">
+        topMenuHeight = 50; //125; (index2.js line0 : 40)
+    </script>
+
+    @if (_Session.isMobileBrowser())
+    {<style>
+        /* from bootstrap - media (max-width: 767px) {*/
+        .visible-xs {
+            display: block !important;
+        }
+
+        table.visible-xs {
+            display: table;
+        }
+
+        tr.visible-xs {
+            display: table-row !important;
+        }
+
+        th.visible-xs,
+        td.visible-xs {
+            display: table-cell !important;
+        }
+
+
+        .visible-xs-block {
+            display: block !important;
+        }
+
+        .visible-xs-inline {
+            display: inline !important;
+        }
+
+        .visible-xs-inline-block {
+            display: inline-block !important;
+        }
+
+        .hidden-xs {
+            display: none !important;
+        }
+
+        /* style.css */
+        .fd-cta { text-align: center;  }
+
+        /*media (min-width: 768px) { */
+        .category-block { margin-bottom: 0px; }
+        .category-block-inner { min-height: 0px; }        
+
+    </style>
+    }
+</head>
+<body class="home page page-id-1296 page-template page-template-page-sidebar-index page-template-page-sidebar-index-php page-body" style="padding-top: 5px;">
+    <header id="page-header" role="banner" class="index-header-v2 fixed-header animated fadeIn delay-xxs headroom headroom--top">
+        <h1><b>&nbsp;INDEX Company</b></h1>
+    </header>
+    <!-- end header -->
+    <div id="content" class="index-us-canada index-wrapper index-wrapper-v2 animated fadeIn delay-xs">
+        <div id="inner-content" class="wrap clearfix">
+            <div id="main" class="clearfix" role="main">
+                <a href="#" class="scroll-top">
+                    <img class="st-static" src="@Url.Content("~/Content/Images/scroll-top.png")">
+                    <img class="st-active" src="@Url.Content("~/Content/Images/scroll-top-active.png")">
+                </a>
+                <div id="container" class="mobile-container container visible-xs animated fadeIn delay-xs">
+                    <ul id="category-lists" class="list-unstyled masonry" style="position: relative; height: 300px; visibility: visible;">
+
+                        @foreach (catItem cw in Model)
+                        {
+                            <li class="category-block col-xs-12 col-sm-6 col-md-4 masonry-brick" id="557" role="article" style1="position: absolute; top: 0px; left: 0px;">
+                                <div class="category-block-inner">
+                                    <header class="category-header">
+                                        <h2 class="category-title">
+                                            <span>@cw.catg.Name</span>
+                                            <i class="arrow-down"></i>
+                                            <span class="admin-edit"></span>
+                                        </h2>
+                                    </header>
+                                    <section class="category-content">
+                                        <ul>
+                                            @foreach (Website web in cw.websites)
+                                            {
+                                                <li class="link @Html.Raw(web.Featured ? "paid-link" : "")">
+                                                    <a href="http://@web.URL">@web.CompanyName</a>
+
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </section>
+                                    <!-- end article -->
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="desktop-container container hidden-xs">
+                    <div class="nano category-list-container col-sm-4 has-scrollbar" style="top: 125px;
+                        bottom: 0px;">
+                        <div class="nano-content" tabindex="0" style="right: -17px;">
+                            <div class="category-list-title">
+                                <h3>
+                                    Categories
+                                </h3>
+                            </div>
+                            <div class="category-list-wrapper">
+                                <ul>
+                                    @foreach (catItem cw in Model)
+                                    {
+                                        <li><a href="#category-@cw.catg.ID"><span class="cl-link">@cw.catg.Name</span></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="nano-pane">
+                            <div class="nano-slider" style="height: 160px; transform: translate(0px, 0px);">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-cards-wrapper col-sm-7">
+                        <ul class="category-cards list-unstyled">
+                            @foreach (catItem cw in Model)
+                            {
+                                <li id="category-@cw.catg.ID" class="category-block section persist-area post-@cw.catg.ID us_canada type-us_canada status-publish hentry">
+                                    <div class="section-content">
+                                        <header class="category-header section-header-wrapper">
+                                            <div class="section-header">
+                                                <h2 class="category-title">@cw.catg.Name</h2>
+                                                <div class="category-links-num">@cw.webCount</div>
+                                                <div class="admin-edit"></div>
+                                            </div>
+                                        </header>
+                                        <div class="category-content">
+                                            <ul>
+                                                @foreach (Website web in cw.websites)
+                                                {
+                                                    <li class="link @Html.Raw(web.Featured ? "paid-link" : "") col-sm-12 col-md-6">
+                                                        <a href="http://@web.URL">
+                                                            <h4>@web.CompanyName</h4>
+                                                            <img src="http://www.google.com/s2/favicons?domain=@web.URL" class="fav-img">
+                                                            <h5>@web.URL</h5>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <!-- end .category-list -->
+                    </div>
+                </div>
+            </div>
+            <!-- end #main -->
+        </div>
+        <!-- end #inner-content -->
+        @*if (_Session.isMobileBrowser())
+        {<div style="height:390px; border:none;"></div>}*@
+    </div>
+    <!-- end #content -->
+    <footer id="page-footer" role="contentinfo" style="z-index:10;">
+        <div id="container" class="container">
+            <div id="inner-footer" class="row clearfix">
+                <nav id="mobile-menu" class="col-sm-5" role="navigation">
+                    <div class="logo-icon"></div>
+                    <ul id="menu-footer" class="nav footer-nav clearfix">
+                        <li id="menu-item-877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-877">
+                            <a href="#"><i class="link-icon"></i><span class="link-text">Index Home</span></a>
+                        </li>
+                    </ul>
+
+                    <nav class="nav-policy col-sm-7" style="float : right;">
+                        <p class="attribution">
+                            &copy;2016 Copy Right. All rights Reserved.
+                            <span style="font-size:8px"><br />On @Html.Raw(_Session.httpUserAgent()) </span>
+                        </p>
+                    </nav>
+                </nav>
+                
+            </div> <!-- end #inner-footer -->
+        </div>
+    </footer>
+    <!-- end footer -->
+    <!-- end page. what a ride! -->
+    <div id="cboxOverlay" style="opacity: 1; cursor: auto; transition-property: all;
+        transition-duration: 0s; transition-timing-function: ease; display: none;">
+    </div>
+    <!-- div id="colorbox" class="" style="padding-bottom: 50px; padding-right: 50px; top: 0px;
+        left: 293px; position: absolute; overflow: hidden; width: 370px; height: 770px;
+        transition-property: all; transition-duration: 0s; transition-timing-function: ease;
+        opacity: 1; cursor: auto; display: none;">
+        <div id="cboxWrapper" style="height: 820px; width: 420px;">
+            <div>
+                <div id="cboxTopLeft" style="float: left;">
+                </div>
+                <div id="cboxTopCenter" style="float: left; width: 370px;">
+                </div>
+                <div id="cboxTopRight" style="float: left;">
+                </div>
+            </div>
+            <div style="clear: left;">
+                <div id="cboxMiddleLeft" style="float: left; height: 770px;">
+                </div>
+                <div id="cboxContent" style="float: left; width: 370px; height: 770px;">
+                    <div id="cboxLoadingOverlay" style="float: left; display: none;">
+                    </div>
+                    <div id="cboxLoadingGraphic" style="float: left; display: none;">
+                    </div>
+                    <div id="cboxTitle" style="float: left; display: block;">
+                        Submit a company</div>
+                    <div id="cboxCurrent" style="float: left; display: none;">
+                    </div>
+                    <div id="cboxNext" style="float: left; display: none;">
+                    </div>
+                    <div id="cboxPrevious" style="float: left; display: none;">
+                    </div>
+                    <div id="cboxSlideshow" style="float: left; display: none;">
+                    </div>
+                    <div id="cboxClose" style="float: left;">
+                    </div>
+                </div>
+                <div id="cboxMiddleRight" style="float: left; height: 770px;">
+                </div>
+            </div>
+            <div style="clear: left;">
+                <div id="cboxBottomLeft" style="float: left;">
+                </div>
+                <div id="cboxBottomCenter" style="float: left; width: 370px;">
+                </div>
+                <div id="cboxBottomRight" style="float: left;">
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute; width: 9999px; visibility: hidden; display: none;">
+        </div>
+    </!-->
+</body>
+</html>

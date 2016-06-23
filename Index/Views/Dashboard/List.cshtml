@@ -1,0 +1,28 @@
+﻿@model List<catItem>
+@using HSG.DAL
+@using HSG.Services
+@using HSG.Helper
+@using System.Collections
+@{ ViewBag.Title = "Dashboard"; Layout = Defaults.masterLayout;}
+@*section HeadContent {    
+    <style type="text/css">
+        select, input[type="text"]
+        {
+            width: 200px;
+        }
+    </style>
+}*@
+<ul>
+@foreach (catItem cw in Model)
+{     
+    <li>@cw.catg.Name </li> @Html.Raw("( websites :" + cw.webCount + " )")
+    <ul>
+    @foreach (Website web in cw.websites)
+     {
+         <li>@web.URL, @web.CompanyName @Html.Raw(web.Featured?"(*)":"") </li>
+     }
+    </ul>       
+}
+</ul>
+@*HT: Set min width required by Dashboard*@
+<img src="@Url.Content("~/Content/Images/spacer.gif")" height="1px" width="900px" />

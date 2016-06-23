@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="HSGmodel">
+  <DataContextMoniker Name="/HSGmodel" />
+  <nestedChildShapes>
+    <classShape Id="548174b1-6686-476c-953a-3159bc120608" absoluteBounds="0.625, 0.875, 2, 1.8909733395775157">
+      <DataClassMoniker Name="/HSGmodel/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="13810b8f-5f47-42bb-8238-5db2e5b3ae3d" absoluteBounds="0.64, 1.335, 1.9700000000000002, 1.3309733395775159" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e0486990-f2b4-40ba-a61e-1e84a402e41e" absoluteBounds="3.75, 0.75, 2, 2.101748084127903">
+      <DataClassMoniker Name="/HSGmodel/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="261a3c77-db0d-43ea-b36a-961f1ed9ced3" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.541748084127903" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9d3692ee-5aba-4230-8049-6bfbc3e9c721" absoluteBounds="0.75, 3.75, 2, 2.5232975732286764">
+      <DataClassMoniker Name="/HSGmodel/Website" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32499990-a58d-4f49-8e31-7315cff66b56" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.963297573228677" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
